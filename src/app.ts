@@ -1,6 +1,6 @@
 import express from 'express';
 import { identify } from './controllers/identityController';
-import { pool } from './db';
+import  pool  from './db';
 
 const app = express();
 

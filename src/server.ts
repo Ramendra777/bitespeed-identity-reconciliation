@@ -1,6 +1,6 @@
 // server.ts
 import app from './app';
-import { pool } from './db';
+import  pool  from './db';
 
 const PORT = process.env.PORT || 3000;
 

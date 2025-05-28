@@ -1,6 +1,6 @@
 // src/models/contact.ts
 import { QueryResult } from 'pg';
-import { pool } from '../db';
+import  pool  from '../db';
 
 export interface Contact {
   id: number;

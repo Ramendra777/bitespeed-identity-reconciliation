@@ -1,5 +1,5 @@
 // src/services/identityService.ts
-import { pool } from '../db';
+import  pool  from '../db';
 import {
   Contact,
   createContact,
