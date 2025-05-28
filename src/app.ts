@@ -1,5 +1,4 @@
-// src/app.ts
-import express, { Request, Response, NextFunction } from 'express';
+import express from 'express';
 import { identify } from './controllers/identityController';
 import { pool } from './db';
 
@@ -8,25 +7,20 @@ const app = express();
 // Middleware
 app.use(express.json());
 
-// Health check endpoint
-app.get('/health', (req: Request, res: Response) => {
+// Routes
+app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
 
-// Main identify endpoint
-app.post('/identify', async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    await identify(req, res);
-  } catch (error) {
-    next(error);
-  }
+// Fixed route handler
+app.post('/identify', identify);
+
+// Error handling
+app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Internal server error' });
 });
 
-// Error handling middleware
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.error(err.stack);
-  res.status(500).json({ error: 'Something went wrong!' });
-});
 
 // Graceful shutdown
 process.on('SIGTERM', async () => {
