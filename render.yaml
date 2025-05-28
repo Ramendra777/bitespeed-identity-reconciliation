@@ -9,6 +9,17 @@ services:
         value: production
       - key: PORT
         value: 3000
+      # Add database connection vars (Render provides these automatically)
+      - key: PG_HOST
+        value: ${bitespeed-db.internalHost}
+      - key: PG_PORT
+        value: ${bitespeed-db.internalPort}
+      - key: PG_USER
+        value: ${bitespeed-db.user}
+      - key: PG_PASSWORD
+        value: ${bitespeed-db.password}
+      - key: PG_DATABASE
+        value: ${bitespeed-db.database}
 databases:
   - name: bitespeed-db
     databaseName: bitespeed
