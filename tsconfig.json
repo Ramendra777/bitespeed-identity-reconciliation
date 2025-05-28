@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["node", "express", "pg"],
+    // "types": ["node", "express", "pg"],
     "target": "es6",
     "module": "commonjs",
     "outDir": "./dist",
