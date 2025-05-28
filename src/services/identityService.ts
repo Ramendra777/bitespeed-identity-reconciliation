@@ -79,7 +79,9 @@ const findPrimaryContact = async (contact: Contact): Promise<Contact> => {
   }
 
   if (!contact.linkedId) {
-    throw new Error(`No contact found for linkedId = ${contact.linkedId}`);
+    // Fallback: treat the current contact as primary if linkedId is missing
+    console.warn(`⚠️ No linkedId for secondary contact with id = ${contact.id}. Treating it as primary.`);
+    return contact;
   }
 
   const result = await pool.query('SELECT * FROM "Contact" WHERE id = $1', [contact.linkedId]);
@@ -90,6 +92,7 @@ const findPrimaryContact = async (contact: Contact): Promise<Contact> => {
 
   return result.rows[0];
 };
+
 
 const formatResponse = (
   primaryContact: Contact,
