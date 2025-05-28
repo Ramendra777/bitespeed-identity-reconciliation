@@ -1,6 +1,6 @@
 CREATE TABLE "Contact" (
   id SERIAL PRIMARY KEY,
-  phoneNumber VARCHAR(15),
+  phoneNumber VARCHAR(255),
   email VARCHAR(255),
   linkedId INTEGER REFERENCES "Contact"(id),
   linkPrecedence VARCHAR(8) CHECK (linkPrecedence IN ('primary', 'secondary')),
