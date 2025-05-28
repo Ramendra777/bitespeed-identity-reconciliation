@@ -17,7 +17,7 @@ services:
       - key: PG_PASSWORD
         value: ${bitespeed-db.password}
       - key: PG_DATABASE
-        value: bitespeed # Use just the database name, not full connection string
+        value: ${bitespeed-db.database} # Use just the database name, not full connection string
       - key: PG_PORT
         value: ${bitespeed-db.internalPort}
 databases:
