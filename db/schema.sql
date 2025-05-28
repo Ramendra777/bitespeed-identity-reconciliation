@@ -3,7 +3,7 @@ CREATE TABLE "Contact" (
   phoneNumber VARCHAR(255),
   email VARCHAR(255),
   linkedId INTEGER REFERENCES "Contact"(id),
-  linkPrecedence VARCHAR(8) CHECK (linkPrecedence IN ('primary', 'secondary')),
+  linkPrecedence VARCHAR(255) CHECK (linkPrecedence IN ('primary', 'secondary')),
   createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
   updatedAt TIMESTAMP NOT NULL DEFAULT NOW(),
   deletedAt TIMESTAMP
